@@ -1,13 +1,41 @@
- //declare bacteria variables here   
+ //declare bacteria variables here
+ int numBacts = 20;
+ Bacteria[] bactArray = new Bacteria[numBacts];
  void setup()   
  {     
- 	//initialize bacteria variables here   
+   size(500, 500);
+   //initialize bacteria variables here
+   for(int i = 0; i < numBacts; i++){
+     bactArray[i] = new Bacteria();
+   }
  }   
  void draw()   
  {    
- 	//move and show the bacteria   
+   //move and show the bacteria   
+   background(0);
+   for(int a = 0; a < numBacts; a++){
+     bactArray[a].move();
+     bactArray[a].show();
+   }
  }  
  class Bacteria    
  {     
- 	//lots of java!   
+   int x, y;
+   int bactColor;
+   //lots of java!   
+   Bacteria (){
+     x = 250;
+     y = 250;
+     bactColor = color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
+   }
+   
+   void move(){
+     x += (int)(Math.random() * 3) - 1;
+     y += (int)(Math.random() * 3) - 1;
+   }
+   
+   void show(){
+     fill(bactColor);
+     ellipse(x, y, 20, 20);
+   }
  }    
