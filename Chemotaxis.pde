@@ -30,24 +30,47 @@
    }
    
    void move(){
-     //biased random walking
+     //biased random walking toward mouse ---------------------------------------
      
      //if bacteria is above the mouse
-     if(y < mouseY){
-       y -= (int)(Math.random() * 4) - 2;
+     if(mousePressed == false){
+       if(y < mouseY){
+         y -= (int)(Math.random() * 4) - 2;
+       }
+       //if bacteria is below mouse
+       if(y > mouseY){
+         y += (int)(Math.random() * 4) - 2;
+       }
+       //if bacteria is to the left of mouse
+       if(x < mouseX){
+         x += (int)(Math.random() * 4) - 1; //-2, -1, 0, 1
+       }
+       //if bacteria is to the right of mouse
+       if(x > mouseX){
+         x -= (int)(Math.random() * 4) - 1; 
+       }
+     } else {
+       //move away from mouse when mouse in pressed
+       
+       //if bacteria is above mouse
+       if(y < mouseY){
+         y += (int)(Math.random() * 4) - 2;
+       }
+       //if bacteria is below mouse
+       if(y > mouseY){
+         y -= (int)(Math.random() * 4) - 2;
+       }
+       //if bacteria is to the left of mouse
+       if(x < mouseX){
+         x -= (int)(Math.random() * 4) - 1; //-2, -1, 0, 1
+       }
+       //if bacteria is to the right of mouse
+       if(x > mouseX){
+         x += (int)(Math.random() * 4) - 1; 
+       }
      }
-     //if bacteria is below mouse
-     if(y > mouseY){
-       y += (int)(Math.random() * 4) - 2;
-     }
-     //if bacteria is to the left of mouse
-     if(x < mouseX){
-       x += (int)(Math.random() * 4) - 1; //-2, -1, 0, 1
-     }
-     //if bacteria is to the right of mouse
-     if(x > mouseX){
-       x -= (int)(Math.random() * 4) - 1; 
-     }
+     
+     
      //add extra random movements
      x += (int)(Math.random() * 3) - 1;
      y += (int)(Math.random() * 3) - 1;
@@ -56,6 +79,7 @@
    }
    
    void show(){
+     noStroke();
      fill(bactColor);
      ellipse(x, y, 20, 20);
    }
