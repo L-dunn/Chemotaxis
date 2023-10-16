@@ -3,6 +3,7 @@
  Bacteria[] bactArray = new Bacteria[numBacts];
  void setup()   
  {     
+   background(0);
    size(500, 500);
    //initialize bacteria variables here
    for(int i = 0; i < numBacts; i++){
@@ -12,7 +13,9 @@
  void draw()   
  {    
    //move and show the bacteria   
-   background(0);
+   //background(0);
+   fill(0, 15);
+   rect(0, 0, 500, 500);
    for(int a = 0; a < numBacts; a++){
      bactArray[a].move();
      bactArray[a].show();
@@ -26,7 +29,7 @@
    Bacteria (){
      x = 250;
      y = 250;
-     bactColor = color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
+     bactColor = color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256), 100);
    }
    
    void move(){
@@ -50,7 +53,7 @@
          x -= (int)(Math.random() * 4) - 1; 
        }
      } else {
-       //move away from mouse when mouse in pressed
+       //move away from mouse when mouse in pressed---------------------------------------
        
        //if bacteria is above mouse
        if(y < mouseY){
@@ -70,12 +73,20 @@
        }
      }
      
+     //make dots fade as they reach the end of the screen
+     //increase opacity toward screen
+     /*
+     if((this.x < 100 || this.x > 400) &&
+        (this.y < 100 || this.y > 400)){
+        tint(this.bactColor, );
+     }
+     */
+     
+     
      
      //add extra random movements
      x += (int)(Math.random() * 3) - 1;
      y += (int)(Math.random() * 3) - 1;
-       
-     
    }
    
    void show(){
