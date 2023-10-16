@@ -1,5 +1,7 @@
  //declare bacteria variables here
  int numBacts = 20;
+ int speedCoeff = 50;
+ 
  Bacteria[] bactArray = new Bacteria[numBacts];
  void setup()   
  {     
@@ -33,56 +35,47 @@
    }
    
    void move(){
+     int speed = (int)(dist(this.x, this.y, mouseX, mouseY)) / speedCoeff;
+     
      //biased random walking toward mouse ---------------------------------------
      
      //if bacteria is above the mouse
      if(mousePressed == false){
        if(y < mouseY){
-         y -= (int)(Math.random() * 4) - 2;
+         y -= speed * ((int)(Math.random() * 4) - 2);
        }
        //if bacteria is below mouse
        if(y > mouseY){
-         y += (int)(Math.random() * 4) - 2;
+         y += speed * ((int)(Math.random() * 4) - 2);
        }
        //if bacteria is to the left of mouse
        if(x < mouseX){
-         x += (int)(Math.random() * 4) - 1; //-2, -1, 0, 1
+         x += speed * ((int)(Math.random() * 4) - 1); //-2, -1, 0, 1
        }
        //if bacteria is to the right of mouse
        if(x > mouseX){
-         x -= (int)(Math.random() * 4) - 1; 
+         x -= speed * ((int)(Math.random() * 4) - 1); 
        }
      } else {
        //move away from mouse when mouse in pressed---------------------------------------
        
        //if bacteria is above mouse
        if(y < mouseY){
-         y += (int)(Math.random() * 4) - 2;
+         y += speed * ((int)(Math.random() * 4) - 2);
        }
        //if bacteria is below mouse
        if(y > mouseY){
-         y -= (int)(Math.random() * 4) - 2;
+         y -= speed * ((int)(Math.random() * 4) - 2);
        }
        //if bacteria is to the left of mouse
        if(x < mouseX){
-         x -= (int)(Math.random() * 4) - 1; //-2, -1, 0, 1
+         x -= speed * ((int)(Math.random() * 4) - 1); //-2, -1, 0, 1
        }
        //if bacteria is to the right of mouse
        if(x > mouseX){
-         x += (int)(Math.random() * 4) - 1; 
+         x += speed * ((int)(Math.random() * 4) - 1); 
        }
      }
-     
-     //make dots fade as they reach the end of the screen
-     //increase opacity toward screen
-     /*
-     if((this.x < 100 || this.x > 400) &&
-        (this.y < 100 || this.y > 400)){
-        tint(this.bactColor, );
-     }
-     */
-     
-     
      
      //add extra random movements
      x += (int)(Math.random() * 3) - 1;
